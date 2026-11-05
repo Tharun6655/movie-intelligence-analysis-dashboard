@@ -1,0 +1,55 @@
+
+version: 2
+
+models:
+  - name: src_movies
+    description: "Staging model for Netflix movies"
+    columns:
+      - name: movie_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: title
+        data_tests:
+          - not_null
+
+  - name: src_ratings
+    description: "Staging model for movie ratings"
+    columns:
+      - name: user_id
+        data_tests:
+          - not_null
+
+      - name: movie_id
+        data_tests:
+          - not_null
+
+      - name: rating
+        data_tests:
+          - not_null
+
+  - name: src_tags
+    description: "Staging model for user tags"
+    columns:
+      - name: user_id
+        data_tests:
+          - not_null
+
+      - name: movie_id
+        data_tests:
+          - not_null
+
+  - name: dim_users
+    columns:
+      - name: user_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: dim_movies
+    columns:
+      - name: movie_id
+        data_tests:
+          - not_null
+          - unique

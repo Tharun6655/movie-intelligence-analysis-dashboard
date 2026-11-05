@@ -1,0 +1,31 @@
+# Name of the dbt project
+name: 'netflix'
+version: '1.0.0'
+config-version: 2
+
+# Profile configured in ~/.dbt/profiles.yml
+profile: 'netflix'
+  
+# Project directories
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Model configurations
+models:
+  netflix:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+    dim:
+      +materialized: table
+    fct:
+      +materialized: table
